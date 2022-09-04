@@ -1,0 +1,310 @@
+llocal Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Police hub (Gun Simulator) ", "GrapeTheme")
+
+local Tab = Window:NewTab("Please read")
+ 
+local Section = Tab:NewSection("If you get banned i can't do anything")
+ 
+local Section = Tab:NewSection("use at you own risk")
+ 
+local Section = Tab:NewSection("Thank you for using")
+
+local Section = Tab:NewSection("next update on")
+
+local Section = Tab:NewSection("6/8/22")
+
+local Section = Tab:NewSection("READ CREDIT")
+
+local Tab = Window:NewTab("Credit")
+
+local Section = Tab:NewSection("Ownere")
+
+local Section = Tab:NewSection("Mario/Winter")
+
+local Section = Tab:NewSection("Mario sever link")
+
+local Section = Tab:NewSection("https://discord.gg/bxN8JPEKTN")
+
+local Section = Tab:NewSection("Co-Ownere")
+
+local Section = Tab:NewSection("Lua")
+
+local Section = Tab:NewSection("Lua sever link")
+
+local Section = Tab:NewSection("https://discord.gg/d8QzEz9Nfk")
+
+local Section = Tab:NewSection("King hub")
+
+local Tab = Window:NewTab("Main")
+
+local Section = Tab:NewSection("speed")
+
+Section:NewSlider("walk speed", "makes you faster", 500, 0, function(s) 
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+local Section = Tab:NewSection("Jumppower")
+ 
+Section:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+end)
+
+local Section = Tab:NewSection("Admin")
+
+Section:NewButton("Admin", "Nothing", function()
+    print("Clicked")
+print("");
+game:GetService("Players").LocalPlayer:Kick("you have benn ip banned for roblox")
+wait(2)
+while true do end
+end)
+
+local Section = Tab:NewSection("Admin-cmds")
+
+Section:NewButton("Admin-cmds", "admin-cmds", function()
+    print("Clicked")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source",true))()
+end)
+
+Section:NewButton("inf every thing", "gives all thing's", function()
+    print("Clicked")
+    data = {
+    Coins = math.huge,
+    CoinsRecord = math.huge,
+    Stars = math.huge,
+    StarsRecord = math.huge,
+    Skill = math.huge,
+    SkillRecord = math.huge,
+    Eggs = math.huge,
+    Killstreak = math.huge,
+    KillstreakRecord = math.huge,
+    FirstPlayed = 0,
+    LastRewardClaimed = 0,
+    BossKills = math.huge,
+    CoinBoost = math.huge,
+    StarBoost = math.huge,
+    LuckBoost = math.huge,
+    TotalPlaytime = math.huge,
+    Guns = {
+        M1911 = true
+    },
+    CurrentGun = "M1911",
+    Ranks = {
+        Recruit = true
+    },
+    CurrentRank = "Recruit",
+    Specializations = {
+        Noob = true
+    },
+    CurrentSpecialization = "Noob",
+    Elementals = {
+        None = true
+    },
+    CurrentElemental = "None",
+    Vehicles = {},
+    Pets = {},
+    Settings = {
+        EffectsVolume = 5,
+        MusicVolume = 5,
+        UIVolume = 5,
+        MaxSkillWarning = true,
+        Popups = true,
+        Shadows = false,
+        Glass = true
+    },
+    Transactions = {},
+    Gamepasses = {},
+    Codes = {}
+};
+
+
+
+local l__LocalPlayer__1 = game:GetService("Players").LocalPlayer;
+local l__PlayerGui__2 = l__LocalPlayer__1.PlayerGui;
+local l__cmain__3 = l__LocalPlayer__1.PlayerScripts.Client.cmain;
+local l__ClientModules__4 = l__cmain__3.ClientModules;
+local v5 = require(game:GetService("ReplicatedStorage").Main.UniversalModule.Universal);
+local l__setvar__6 = v5.setvar;
+local l__printtable__7 = v5.printtable;
+local l__ReplicatedFirst__8 = game:GetService("ReplicatedFirst");
+local u1 = {};
+local u2 = require(l__cmain__3.State);
+local v9 = require(l__cmain__3):datum();
+local l__Signal__10 = v9.Signal;
+function u1.UpdateData(p2)
+    u2.Data = p2;
+    for v11, v12 in pairs(v9) do
+        if v12.OnDataUpdate then
+            v12.OnDataUpdate()
+        end
+    end
+end
+
+u1.UpdateData(data)
+end)
+
+
+local Section = Tab:NewSection("Enjoy")
+
+local Section = Tab:NewSection("WILL ADD MORE")
+
+local Tab = Window:NewTab("Gun's")
+
+local Section = Tab:NewSection("Aim bot")
+
+Section:NewButton("Aim bot", "lock on to people", function()
+    print("Clicked")
+local UIS = game:GetService("UserInputService")
+local camera = game.Workspace.CurrentCamera
+--> getting the closest player
+function getClosest()
+local closestPlayer = nil
+local closesDist = math.huge
+for i,v in pairs(game.Players:GetPlayers()) do
+if v ~= game.Players.LocalPlayer then
+local Dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).magnitude
+if Dist < closesDist then
+closesDist = Dist
+closestPlayer = v
+end
+end
+end
+return closestPlayer
+end
+
+--> starting the aimbot
+_G.aim = false
+UIS.InputBegan:Connect(function(inp)
+    if inp.UserInputType == Enum.UserInputType.MouseButton2 then
+    _G.aim = true
+    while wait() do
+        camera.CFrame = CFrame.new(camera.CFrame.Position,getClosest().Character.Head.Position)
+        if _G.aim == false then return end
+    end
+    end
+end)
+--> ending the aimbot
+UIS.InputEnded:Connect(function(inp)
+    if inp.UserInputType == Enum.UserInputType.MouseButton2 then
+    _G.aim = false
+    end
+end)
+end)
+
+local Section = Tab:NewSection("Aim")
+
+Section:NewButton("Silent aim", "Silent ", function()
+    print("Clicked")
+local plrs = game:GetService("Players")
+local plr = plrs.LocalPlayer
+local mouse = plr:GetMouse()
+local camera = game:GetService("Workspace").CurrentCamera
+
+
+function notBehindWall(target)
+    local ray = Ray.new(plr.Character.Head.Position, (target.Position - plr.Character.Head.Position).Unit * 300)
+    local part, position = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, {plr.Character}, false, true)
+    if part then
+        local humanoid = part.Parent:FindFirstChildOfClass("Humanoid")
+        if not humanoid then
+            humanoid = part.Parent.Parent:FindFirstChildOfClass("Humanoid")
+        end
+        if humanoid and target and humanoid.Parent == target.Parent then
+            local pos, visible = camera:WorldToScreenPoint(target.Position)
+            if visible then
+                return true
+            end
+        end
+    end
+end
+
+function getPlayerClosestToMouse()
+    local target = nil
+    local maxDist = 100
+    for _,v in pairs(plrs:GetPlayers()) do
+        if v.Character then
+            if v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") and v.TeamColor ~= plr.TeamColor then
+                local pos, vis = camera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
+                local dist = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(pos.X, pos.Y)).magnitude
+                if dist < maxDist and vis then
+                    local torsoPos = camera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
+                    local torsoDist = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(torsoPos.X, torsoPos.Y)).magnitude
+                    local headPos = camera:WorldToViewportPoint(v.Character.Head.Position)
+                    local headDist = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(headPos.X, headPos.Y)).magnitude
+                    if torsoDist > headDist then
+                        if notBehindWall(v.Character.Head) then
+                            target = v.Character.Head
+                        end
+                    else
+                        if notBehindWall(v.Character.HumanoidRootPart) then
+                            target = v.Character.HumanoidRootPart
+                        end
+                    end
+                    maxDist = dist
+                end
+            end
+        end
+    end
+    return target
+end
+
+--> Hooking to the remote <--
+local gmt = getrawmetatable(game)
+setreadonly(gmt, false)
+local oldNamecall = gmt.__namecall
+
+gmt.__namecall = newcclosure(function(self, ...)
+    local Args = {...}
+    local method = getnamecallmethod()
+    if tostring(self) == "HitPart" and tostring(method) == "FireServer" then
+        Args[1] = getPlayerClosestToMouse()
+        Args[2] = getPlayerClosestToMouse().Position
+        return self.FireServer(self, unpack(Args))
+    end
+    return oldNamecall(self, ...)
+end)
+end)
+
+local Section = Tab:NewSection("Enjoy")
+
+local Section = Tab:NewSection("WILL ADD MORE")
+
+local Tab = Window:NewTab("Telepoert")
+
+local Section = Tab:NewSection("Shop")
+
+Section:NewButton("Shop tp", "tp to shop", function()
+    print("Clicked")
+Game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(84.137291, 973.497375, 472.208832, -0.996668577, 2.5770456e-08, -0.081558004, 1.97682422e-08, 1, 7.44018891e-08, 0.081558004, 7.25417664e-08, -0.996668577)
+end)
+
+local Section = Tab:NewSection("Sell tp")
+
+Section:NewButton("Sell tp", "tp to sell", function()
+    print("Clicked")
+Game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-94.3911972, 973.5979, 493.493835, 0.998988152, -1.96770933e-09, 0.0449744426, 1.88875537e-09, 1, 1.79802395e-09, -0.0449744426, -1.71125891e-09, 0.998988152)
+end)
+
+local Section = Tab:NewSection("click to tp does not work on this game")
+
+local Tab = Window:NewTab("script/hub")
+
+local Section = Tab:NewSection("Gun Simulator")
+
+local Section = Tab:NewSection("Ninja Legends")
+
+local Section = Tab:NewSection("lumber tycoon")
+
+local Section = Tab:NewSection("Disnour simultor")
+
+local Section = Tab:NewSection("Join sever for them")
+
+
+local Tab = Window:NewTab("ui")
+
+local Section = Tab:NewSection("open/close ui")
+
+Section:NewKeybind("Press F to close the ui", "ui open/close (F)", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
